@@ -10,9 +10,9 @@ import "../utils/normalize.css"
 import "../utils/css/screen.css"
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 const BlogIndex = ({ data }, location) => {
-  const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allProject.edges;
-  let postCounter = 0;
+  const siteTitle = data.site.siteMetadata.title
+  const posts = data.allProject.edges
+  let postCounter = 0
 
   return (
     <Layout title={siteTitle}>
@@ -26,12 +26,12 @@ const BlogIndex = ({ data }, location) => {
           <h2 className="page-head-title">
             {data.site.siteMetadata.description}
           </h2>
-          <h3>Małe zmiany, które zostały wprowadzone</h3>
+          <h3>Kilka najważniejszych projektów pływających na rozwój</h3>
         </header>
       )}
       <div className="post-feed">
         {posts.map(({ node }) => {
-          postCounter++;
+          postCounter++
           return (
             <PostCard
               key={node.slug}
@@ -44,7 +44,7 @@ const BlogIndex = ({ data }, location) => {
       </div>
     </Layout>
   )
-};
+}
 
 const indexQuery = graphql`
   query {
@@ -54,22 +54,22 @@ const indexQuery = graphql`
         description
       }
     }
-    allProject(sort: {fields: flotiqInternal___createdAt, order: DESC}) {
+    allProject(sort: { fields: flotiqInternal___createdAt, order: DESC }) {
       edges {
-            node {
-              id
-              gallery {
-                extension
-                id
-              }
-              description
-              name
-              slug
-            }
+        node {
+          id
+          gallery {
+            extension
+            id
           }
+          description
+          name
+          slug
+        }
+      }
     }
   }
-`;
+`
 
 export default props => (
   <StaticQuery
