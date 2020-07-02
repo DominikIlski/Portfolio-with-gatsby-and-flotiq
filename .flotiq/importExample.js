@@ -13,7 +13,7 @@ let apiUrl
 
 const directoryImagePath = path.join(__dirname, `images`)
 const directoryPath = path.join(__dirname, ``)
-
+ 
 exports.importExamples = async () => {
     apiUrl = process.env.GATSBY_FLOTIQ_BASE_URL
     assert.ok(apiUrl,`You must specify API url (in most cases it is "https://api.flotiq.com")`)
